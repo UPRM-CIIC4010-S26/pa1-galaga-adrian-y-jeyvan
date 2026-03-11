@@ -61,9 +61,9 @@ void Program::Update() {
         for (Projectile& p : Projectile::projectiles) { 
             p.update(); 
             
-            if (p.ID != 0 && HitBox::Collision(player->hitBox, p.hitBox)) {
+            if (p.ID != 0 && HitBox::Collision(player->hitBox, p.getHitBox())) {
                 player->position.first = GetScreenHeight() / 2 - 15;
-                p.active-> false;
+                p.del = true;
                 lives--;
                 pauseFrames = 120;
             }
@@ -174,6 +174,10 @@ void Program::KeyInputs() {
 
     if (!startup && !paused && !gameOver && pauseFrames <= 0) player->keyInputs();
    
+    if (IsKeyPressed('K')) {
+        score += 500;
+    }
+
 }
 
 void Program::PlayerReset() {
@@ -197,4 +201,5 @@ void Program::Reset() {
     count = 0;
     delay = 0;
     lives = 3;
+    score = 0;
 }
