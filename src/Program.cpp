@@ -62,10 +62,8 @@ void Program::Update() {
             p.update(); 
             
             if (p.ID != 0 && HitBox::Collision(player->hitBox, p.getHitBox())) {
-                player->position.first = GetScreenHeight() / 2 - 15;
+                PlayerReset();
                 p.del = true;
-                lives--;
-                pauseFrames = 120;
             }
 
         }
@@ -87,6 +85,7 @@ void Program::Draw() {
                    Vector2{0, 0}, 0, WHITE);
     }
 
+    DrawText(("Score: " + std::to_string(score)).c_str(), 10, 10, 24, WHITE);
 
     for (Projectile p : Projectile::projectiles) p.draw();
     for (std::pair<std::pair<float, float>, Enemy*>& p : Enemy::enemies) if (p.second) p.second->draw();
@@ -202,4 +201,27 @@ void Program::Reset() {
     delay = 0;
     lives = 3;
     score = 0;
+
+    Enemy::enemies.push_back(std::pair<std::pair<float, float>, Enemy*> {
+            std::pair<float, float>{350, 150}, 
+            new SpEnemy(350, 150)
+        });
+
+    Enemy::enemies.push_back(std::pair<std::pair<float, float>, Enemy*> {
+            std::pair<float, float>{600, 150}, 
+            new SpEnemy(600, 150)
+        });
+
+    for (int i = 0; i < 30; i++) {
+        int column = i % 10;
+        int row = i / 10;
+        
+        float x = 250 + 50 * column;
+        float y = 200 + 50 * row;
+
+        Enemy::enemies.push_back(std::pair<std::pair<float, float>, Enemy*> {
+            std::pair<float, float>{x, y}, 
+            new StdEnemy(x, y)
+        });
+    }
 }
