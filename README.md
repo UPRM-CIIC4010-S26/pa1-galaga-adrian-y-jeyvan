@@ -11,7 +11,7 @@ Don't forget that you must also fill out an evaluation form in Moodle to conside
 
 ## Grading
 
-802-24-8344 Adrián Antommattei González adrian.antommattei@upr.edu
+(802-24-8344) (Adrián Antommattei González) (adrian.antommattei@upr.edu)
 (802-25-1498) (Jeyvan Hernández Carreras) (jeyvan.hernandez@upr.edu)
 
 Any project that doesn't compile will receive a 0.

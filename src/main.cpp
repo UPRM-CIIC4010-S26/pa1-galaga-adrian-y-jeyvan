@@ -13,6 +13,7 @@ int main ()
 	Program Galaga;
 	ImageManager::Load();
 	SoundManager::Load();
+	PlaySound(SoundManager::soundtrack);
 
 	if (!IsWindowReady()) {
     TraceLog(LOG_ERROR, "Window failed to initialize!");
