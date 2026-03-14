@@ -22,3 +22,10 @@ If a partner has no commits in the repositories, they will receive a 0.
 
 ## Student Notes
 If you have any bonus specs, bonus or any details the TA's should know, you should include it here:
+    Adrian:
+        1. Added background music when the game boots up, music is from the game Look Outside. 
+        2. Made a new sprite for the ship that makes it look like the 13th Visitor from Star of Providence.
+    Jeyvan:
+        1. Added new gameover screen that displays the current and new highscore.
+
+    Bonus specs in total: 3
