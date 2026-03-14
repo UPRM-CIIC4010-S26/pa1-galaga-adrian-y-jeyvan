@@ -68,7 +68,13 @@ void Program::Update() {
 
         }
 
-        if (lives <= 0 && pauseFrames <= 0) gameOver = true;
+        if (lives <= 0 && pauseFrames <= 0) {
+            if (Enemy::score > Enemy::highScore) {
+                Enemy::highScore = Enemy::score;
+            }
+            gameOver = true;
+        }
+
         Projectile::CleanProjectiles();
         Projectile::ProjectileCollision();
 
@@ -168,9 +174,19 @@ void Program::DrawPauseScreen() {
 }
 
 void Program::DrawGameOver() {
-    DrawRectangle(0, 0, (float)GetScreenWidth(), (float)GetScreenHeight(), Color{0, 0, 0, 125});
-    DrawText("Game Over", (GetScreenWidth() / 2) - 380, 50, 144, WHITE);
-    DrawText("Press Enter", (GetScreenWidth() / 2) - 75, GetScreenHeight() / 2, 24, GRAY);
+
+    DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), Color{0,0,0,200});
+
+    DrawText("GAME OVER", GetScreenWidth()/2 - 220, 100, 80, RED);
+
+    DrawText(("Score: " + std::to_string(Enemy::score)).c_str(),
+             GetScreenWidth()/2 - 100, 300, 40, WHITE);
+
+    DrawText(("High Score: " + std::to_string(Enemy::highScore)).c_str(),
+             GetScreenWidth()/2 - 140, 360, 40, YELLOW);
+
+    DrawText("Press ENTER to Restart",
+             GetScreenWidth()/2 - 170, 500, 30, GRAY);
 }
 
 void Program::KeyInputs() {

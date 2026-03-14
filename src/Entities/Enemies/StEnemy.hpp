@@ -14,7 +14,7 @@ class StEnemy : public Enemy {
         StEnemy(float x, float y, bool newSpawn) : Enemy(x, y){
             this->cooldown = GetRandomValue(120, 600);
             this->spawning = newSpawn;
-            this->scoreValue = 150;
+            this->scoreValue = 80;
         }
 
         void draw() override;
