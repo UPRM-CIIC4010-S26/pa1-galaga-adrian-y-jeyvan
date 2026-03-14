@@ -6,11 +6,14 @@ class DyEnemy : public Enemy {
         float angle = 135;
         float aimAngle = 225;
         bool loop = false;
+        int textureType;
 
     public:
         DyEnemy(float x, float y) : Enemy(x, y) { 
             this->cooldown = GetRandomValue(90, 300);
-            this->health = 1; 
+            this->health = 1;
+            this->scoreValue = 200;
+            textureType = GetRandomValue(1, 2);
         }
 
         void draw() override;
